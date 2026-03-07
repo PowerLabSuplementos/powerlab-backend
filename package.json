@@ -1,8 +1,8 @@
 {
   "name": "powerlab-backend",
   "version": "1.0.0",
-  "scripts": {
-    "start": "node index.js"
+  "engines": {
+    "node": "18.x"
   },
   "dependencies": {
     "firebase-admin": "^11.0.0",
