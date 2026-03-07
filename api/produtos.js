@@ -9,15 +9,9 @@ module.exports = async (req, res) => {
 
   try {
     const db = admin.firestore();
-
-    if (req.method === 'GET') {
-      const snapshot = await db.collection('produtos').get();
-      const produtos = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      return res.status(200).json(produtos);
-    }
-
-    return res.status(405).json({ error: 'Método não permitido' });
-
+    const snapshot = await db.collection('produtos').get();
+    const produtos = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    return res.status(200).json(produtos);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: error.message });
