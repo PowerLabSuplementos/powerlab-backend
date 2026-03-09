@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
     }));
 
     const preference = new Preference(client);
-    const frontendUrl = process.env.FRONTEND_URL || 'https://powerlab.netlify.app';
+    const frontendUrl = process.env.FRONTEND_URL || 'https://powerlabsuplementos.netlify.app';
 
     const result = await preference.create({
       body: {
