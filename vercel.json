@@ -1,31 +1,55 @@
 {
   "version": 2,
+  "env": {
+    "FIREBASE_PROJECT_ID": "power-lab-suplementos",
+    "FIREBASE_CLIENT_EMAIL": "firebase-adminsdk-fbsvc@power-lab-suplementos.iam.gserviceaccount.com",
+    "FIREBASE_PRIVATE_KEY": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDi8IicnwgA70m+\n9FWW9mwME3Uc+0s2pE5+FQNe/Y539HWkIdYkIrVR1Rjveusk9KWEy0owY08svZ1/\n09llJ9PBbPhX/KZjkNS5CZs4VU6WKyeCuhGa5qbjBv1dzzDoSIoH9LneB5mH+d0Z\nqw5/a3fuBnxwto4Zz6FGnlmvDlH/tAztt4sbrPtERV4LaO+uU0z/qHaxpd7xEtAs\nnIjQBezZ0ksJgREWpacEijsALLBQYEMTS2auQOA8gk/vulqLiqEQedvFPMqbQSL7\nO0cfO9kDZKiLJOGqInO4xQR0173wFzUjYswQIjPOwTMigMf8jG75mB6INinF58mq\nVOXIT8gTAgMBAAECggEAM0tExYnYiEWNuKCHW/jU0SHwvZ07Ed2vdCYRvf23nvtd\nP7z6Ju7FZvqwiSiST6cQZmSAn1FDCwzMtaDPqWKIJVcZBuIvRZ/txOkb8W6utZiJ\ndK3T3tw1amkhCXwURNxofoXdIQc8t5RNWkjknP5QfDdxFxTcJ49bl5ehE8U72XyO\nygyf+K/GAICl97oTcGXq8Z2kz4lK9EfZzH4p/lcUehF4UVRGzxU7mFJ+cMue80fP\n5LAp2gZ+PEVdu3EkIRx9ynr3LIca9p0j+3FSduqO+tp8I2IjZNpqo2fRLe8skgg6\no1QTsEWCqx3V60DJSxhZa0Fqvbbg+hAzRJuUbjj3gQKBgQD6QFwWQ96GiJJRVo6G\n9BXm1B6r09utTDRIcif/bQ1Kgrt8kA89IRzNU0Yyf2XuzwaZFt6oM26Stu/YesLK\ncAKF7MvHFLBS5xFhZz83q+xm9YpuQdEEGNK7S7rZDbCG/O88uuETGioEWSOtT7gf\nc/2Lq2EMe/hFSKn1XbsWbW3J0wKBgQDoJxXX/DCSa0qxLIOHbfwnOClMjFrNXP8N\nwzNbfm5lzGI8fu4Z7Z5fRgvESRej/TcdMn/iISfp9qxWgNMjvosLsIz91Yt9xlS6\nxq9hlpUuP86Y0meSKngDiX7ZKWF7MX8GrHKZsQKozbpmioy26gkUtGPL8wQ1zXZI\nxEg4bwbgwQKBgDR+GZLmC6Bmt2JuaJkwTAPOTNy4JOVWDcWAhJlUk6wkfhVj1n55\nGqSLKjdfd88/B+BG5s+bcj8+NlNPdNqn4i+beyc4VMAfDgtDcARKgN0b9jyoe6KD\nXnjBKuFquLOoDLrNbHboTxX4aL5q8XFPkEii20mWG37U/imkzqCmtZfXAoGATV/x\njNo2CicObvzKHdJPj3bNdQD2pqnPLHQZ4u3Bt9YmC8m2bBfhiBmdhF9kLLkRrH6P\nVvv8BKO9jttDBA/W4h+G7ndFFbeLt/DOtXTt5ctIfXDrKjFTbMJf79s17Uxy7PN/\nArCXlVF0Rgb5nWFlg2wYMvqdNZ10Rg59j6mZnkECgYEAtb0EaH4oQwwxQL638TKY\nR2jnkTQOdrYKSzSmu/JmLZqkFeJqYYBIDe0tj/kCjdOB1hM5fx7/95hznK1a17wV\ndOIXlslv/SCrJadd9glVUsfvEAOOvWU+ADVXr3iPMTx96OO1YgDNqnky16TuQrSd\nX3JT+Iw+OEaHfn/fEzqeK60=\n-----END PRIVATE KEY-----\n",
+    "FIREBASE_STORAGE_BUCKET": "power-lab-suplementos.appspot.com",
+    "MERCADOPAGO_ACCESS_TOKEN": "APP_USR-358327110384140-030716-2f6cdd16ea017151fef40d595d5c6855-314621968",
+    "MERCADOPAGO_PUBLIC_KEY": "APP_USR-45019147-b8e8-4e5c-aadd-4ef7f2618213",
+    "MERCADOPAGO_CLIENT_ID": "358327110384140",
+    "MERCADOPAGO_CLIENT_SECRET": "Ogend6cHyRo9QTWDVKOpzf1FjJgPY3Mm",
+    "FRONTEND_URL": "https://powerlabsuplementos.netlify.app"
+  },
   "builds": [
     {
       "src": "api/**/*.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "maxLambdaSize": "50mb",
+        "nodeVersion": "22.x"
+      }
     }
   ],
   "routes": [
     {
       "src": "/api/produtos",
-      "dest": "/api/produtos.js"
+      "dest": "/api/produtos.js",
+      "methods": ["GET", "POST", "DELETE", "OPTIONS"]
     },
     {
       "src": "/api/admin",
-      "dest": "/api/admin.js"
+      "dest": "/api/admin.js",
+      "methods": ["GET", "OPTIONS"]
     },
     {
       "src": "/api/create_preference",
-      "dest": "/api/create_preference.js"
+      "dest": "/api/create_preference.js",
+      "methods": ["POST", "OPTIONS"]
     },
     {
       "src": "/api/update-order-status",
-      "dest": "/api/update-order-status.js"
+      "dest": "/api/update-order-status.js",
+      "methods": ["POST", "OPTIONS"]
     },
     {
       "src": "/api/upload",
-      "dest": "/api/upload.js"
+      "dest": "/api/upload.js",
+      "methods": ["POST", "OPTIONS"]
+    },
+    {
+      "src": "/(.*)",
+      "status": 404
     }
   ]
 }
