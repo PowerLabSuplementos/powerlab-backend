@@ -8,8 +8,24 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.js"
+      "src": "/api/produtos",
+      "dest": "/api/produtos.js"
+    },
+    {
+      "src": "/api/admin",
+      "dest": "/api/admin.js"
+    },
+    {
+      "src": "/api/create_preference",
+      "dest": "/api/create_preference.js"
+    },
+    {
+      "src": "/api/update-order-status",
+      "dest": "/api/update-order-status.js"
+    },
+    {
+      "src": "/api/upload",
+      "dest": "/api/upload.js"
     }
   ]
 }

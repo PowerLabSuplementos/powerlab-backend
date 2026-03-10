@@ -1,4 +1,4 @@
-const admin = require('../lib/firebase-admin');
+const admin = require('../lib/firebase');
 const multer = require('multer');
 
 const upload = multer({ storage: multer.memoryStorage() });
